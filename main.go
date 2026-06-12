@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
-	"study/http"
-	todo_app "study/todo_app"
+	featurepostgres "study/feature_postgres"
 )
 
 // //type Message struct {
@@ -86,12 +84,12 @@ import (
 
 func main() {
 
-	todoList := todo_app.NewList()
-	httpHandlers := http.NewHTTPHandlers(todoList)
-	httpServer := http.NewHTTPServer(httpHandlers)
-	if err := httpServer.StartServer(); err != nil {
-		fmt.Println("failed to start http server", err)
-	}
+	//	todoList := todo_app.NewList()
+	//	httpHandlers := http.NewHTTPHandlers(todoList)
+	//httpServer := http.NewHTTPServer(httpHandlers)
+	//	if err := httpServer.StartServer(); err != nil {
+	//		fmt.Println("failed to start http server", err)
+	//	}
 
 	//http.HandleFunc("/pay", payHandler)
 
@@ -99,5 +97,6 @@ func main() {
 	//
 	//		fmt.Println("Error server", err)
 	//	}
+	featurepostgres.CheckConnection()
 
 }
