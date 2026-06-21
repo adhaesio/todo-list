@@ -17,9 +17,25 @@ func main() {
 	if err := simple_sql.CreateTable(ctx, conn); err != nil {
 		panic(err)
 	}
-	if err := simple_sql.InsertRow(ctx, conn); err != nil {
+	// if err := simple_sql.InsertRow(
+	// 	ctx,
+	// 	conn,
+	// 	"Анальная еда",
+	// 	"Покушац надо",
+	// 	false,
+	// 	time.Now(),
+	// ); err != nil {
+	// 	panic(err)
+	// }
+
+	if err := simple_sql.UpdateTable(ctx, conn); err != nil {
 		panic(err)
 	}
+	// if err := simple_sql.DeleteRow(ctx, conn); err != nil {
+
+	// 	panic(err)
+
+	// }
 
 	fmt.Println("succeed!")
 }
