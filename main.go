@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"study/feature_postgres/simple_connection"
 	"study/feature_postgres/simple_sql"
+	"time"
 )
 
 func main() {
@@ -17,9 +18,25 @@ func main() {
 	if err := simple_sql.CreateTable(ctx, conn); err != nil {
 		panic(err)
 	}
-	if err := simple_sql.InsertRow(ctx, conn); err != nil {
+	if err := simple_sql.InsertRow(
+		ctx,
+		conn,
+		"автрак",
+		"Покушац надо",
+		false,
+		time.Now(),
+	); err != nil {
 		panic(err)
 	}
+
+	if err := simple_sql.UpdateTable(ctx, conn); err != nil {
+		panic(err)
+	}
+	// if err := simple_sql.DeleteRow(ctx, conn); err != nil {
+
+	// 	panic(err)
+
+	// }
 
 	fmt.Println("succeed!")
 }

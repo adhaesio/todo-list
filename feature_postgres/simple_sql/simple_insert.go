@@ -2,17 +2,31 @@ package simple_sql
 
 import (
 	"context"
+	"time"
 
 	"github.com/jackc/pgx/v5"
 )
 
-func InsertRow(ctx context.Context, conn *pgx.Conn) error {
+// - http
+// body
+// struct
+//
+
+func InsertRow(
+	ctx context.Context,
+	conn *pgx.Conn,
+	title string,
+	description string,
+	completed bool,
+	createdAt time.Time,
+
+) error {
 	sqlQuery := `
 INSERT INTO tasks (title, description, completed, created_at)
-VALUES ('Завтрак','сделать домашку по арабскому до 20.10.26', FALSE, '2026-06-20 18:00:05')
+VALUES ($1,$2, $3, $4)
 
 	`
-	_, err := conn.Exec(ctx, sqlQuery)
+	_, err := conn.Exec(ctx, sqlQuery, title, description, completed, createdAt)
 
 	return err
 
